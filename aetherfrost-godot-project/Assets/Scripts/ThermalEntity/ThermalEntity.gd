@@ -7,30 +7,32 @@ extends Node
 
 
 # public properties
+# Thermal Capacity of this entity in Joules/Degree (ºC/ºK)
 var heatCapacity :float :
 	set(value):
 		_heat_capacity = value
 	get:
 		return _heat_capacity
-@export var _heat_capacity :float = 1000.0			# Thermal Capacity of this entity in Joules/Degree (ºC/ºK)
+@export var _heat_capacity :float = 1000.0
 
-
+# Total joules of energy contained by this ThermalEntity.
 var internal_energy :float :
 	set(value):
 		_internal_energy = value
 	get:
 		return _internal_energy
-@export var _internal_energy :float = 0.0			# Total joules of energy contained by this ThermalEntity.
+var _internal_energy :float = 0.0
 
-
+# Temperature of this entity after last ThermalUpdateFinalPass(), in kelvin degrees ºK. Serialized/stored value will be the initial temperature of a newly instantiated ThermalEntity
 var kelvin :float :
 	get:
 		return _kelvin
+@export var _kelvin :float = 273.15
 
 
 var celsius :float :
 	get:
-		return _kelvin + 273.15
+		return _kelvin - 273.15
 #ENDOF public properties
 
 
@@ -52,7 +54,6 @@ func _ready ():
 
 
 # private variables
-var _kelvin :float = 0.0							# Temperature of this entity after last ThermalUpdateFinalPass(), in kelvin degrees ºK
 #ENDOF private variables
 
 
@@ -68,7 +69,7 @@ func _connect_updater ():
 
 func _thermal_update ():
 	_update_temperature()
-	#print_debug("ThermalEntity._thermal_update()")
+	print_debug("ThermalEntity._thermal_update()")
 
 
 func _update_temperature ():

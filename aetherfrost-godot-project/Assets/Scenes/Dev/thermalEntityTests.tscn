@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://chd1kwemhblx6"]
+
+[ext_resource type="Script" uid="uid://c1oalvvwhmbtd" path="res://Assets/Scripts/ThermalEntity/thermal_update_manager.gd" id="1_nle7x"]
+[ext_resource type="Script" uid="uid://s3f0gx001cwa" path="res://Assets/Scripts/ThermalEntity/ThermalEntity.gd" id="2_ek0qu"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_nle7x")
+
+[node name="ThermalEntity" type="Node" parent="."]
+script = ExtResource("2_ek0qu")
+metadata/_custom_type_script = "uid://s3f0gx001cwa"
+
+[node name="ThermalUpdateManager" type="Node" parent="."]
+script = ExtResource("1_nle7x")
+metadata/_custom_type_script = "uid://c1oalvvwhmbtd"

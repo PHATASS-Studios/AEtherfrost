@@ -8,6 +8,6 @@ signal thermalUpdate ()
 #ENDOF emitted signals
 
 # node lifecycle
-func _physics_process(_delta_time: float) -> void:
+func _physics_process(_elta_time: float) -> void:
 	thermalUpdate.emit()
 #ENDOF node lifecycle

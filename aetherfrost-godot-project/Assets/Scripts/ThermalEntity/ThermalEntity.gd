@@ -80,8 +80,8 @@ func _connect_updater ():
 
 func _thermal_update ():
 	_update_temperature()
-	print_debug("ThermalEntity._thermal_update()")
-	print_debug(_kelvin)
+	#print_debug("ThermalEntity._thermal_update()")
+	#print_debug(_kelvin)
 
 
 func _update_temperature ():

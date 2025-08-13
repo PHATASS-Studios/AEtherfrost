@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b35vvaq6iihw5"]
+
+[ext_resource type="Script" uid="uid://s3f0gx001cwa" path="res://Assets/Scripts/ThermalEntity/ThermalEntity.gd" id="1_0csfb"]
+[ext_resource type="Texture2D" uid="uid://6r7p6k1hkipl" path="res://Assets/Sprites/Technical/16x16-TileSample.png" id="2_61pbs"]
+[ext_resource type="Script" uid="uid://ch7y4rtro7ai6" path="res://Assets/Scripts/SimpleBehaviours/SpriteBehaviours/canvas_item_modulate_from_entity_temperature.gd" id="3_g1ipo"]
+[ext_resource type="Gradient" uid="uid://bk1r3mmf73cfe" path="res://Assets/Gradients/Basic_heat_gradient.tres" id="4_u4xkw"]
+
+[node name="ThermalTile" type="Node2D"]
+script = ExtResource("1_0csfb")
+_internal_energy = 300000.0
+metadata/_custom_type_script = "uid://s3f0gx001cwa"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_61pbs")
+centered = false
+
+[node name="CanvasItemModulateFromEntityTemperature" type="Node" parent="Sprite2D" node_paths=PackedStringArray("canvas_item", "thermal_entity")]
+script = ExtResource("3_g1ipo")
+canvas_item = NodePath("..")
+thermal_entity = NodePath("../..")
+sample_gradient = ExtResource("4_u4xkw")
+metadata/_custom_type_script = "uid://ch7y4rtro7ai6"

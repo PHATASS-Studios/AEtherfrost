@@ -1,6 +1,6 @@
 ## https://docs.google.com/document/d/1D9D-ezRCtvuZdkEmf3TFpGHyO9wSe8ZugFc8fflKAo4/edit?usp=sharing
 class_name ThermalEntity
-extends Node
+extends Node2D
 
 # emitted signals
 #ENDOF emitted signals
@@ -21,7 +21,7 @@ var internal_energy :float :
 		_internal_energy = value
 	get:
 		return _internal_energy
-var _internal_energy :float = 0.0
+@export var _internal_energy :float = 0.0
 
 # Temperature of this entity after last ThermalUpdateFinalPass(), in kelvin degrees ºK. Serialized/stored value will be the initial temperature of a newly instantiated ThermalEntity
 var kelvin :float :
@@ -48,8 +48,8 @@ func add_energy (joules :float):
 
 # Node lifecycle
 func _ready ():
+	#_set_internal_energy_from_kelvin(_kelvin)
 	_connect_updater()
-	pass
 #ENDOF Node lifecycle
 
 
@@ -58,6 +58,9 @@ func _ready ():
 
 
 # private functions
+func _set_internal_energy_from_kelvin (kelvin : float):
+	_internal_energy = kelvin * _heat_capacity;
+
 func _connect_updater ():
 	var update_manager :ThermalUpdateManager = find_parent("ThermalUpdateManager") as ThermalUpdateManager
 	if not update_manager:
@@ -66,10 +69,10 @@ func _connect_updater ():
 	else:
 		update_manager.thermalUpdate.connect(_thermal_update)
 
-
 func _thermal_update ():
 	_update_temperature()
 	print_debug("ThermalEntity._thermal_update()")
+	print_debug(_kelvin)
 
 
 func _update_temperature ():

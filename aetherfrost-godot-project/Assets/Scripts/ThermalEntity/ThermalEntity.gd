@@ -29,10 +29,18 @@ var kelvin :float :
 		return _kelvin
 @export var _kelvin :float = 273.15
 
-
+# Same as kelvin but in Cº
 var celsius :float :
 	get:
 		return _kelvin - 273.15
+		
+# Float value between 1.0 and 0.0 that multiplies this entity's heat exchange
+var conductivity_factor :float :
+	get:
+		return _conductivity_factor
+	set (value):
+		_conductivity_factor = value
+@export var _conductivity_factor :float = 0.1
 #ENDOF public properties
 
 
@@ -42,7 +50,7 @@ func thermal_update_final_pass ():
 
 
 func add_energy (joules :float):
-	_internal_energy += joules
+	_energy_change_buffer += joules
 #ENDOF public methods
 
 
@@ -54,6 +62,7 @@ func _ready ():
 
 
 # private variables
+var _energy_change_buffer :float = 0.0
 #ENDOF private variables
 
 
@@ -76,5 +85,10 @@ func _thermal_update ():
 
 
 func _update_temperature ():
+	_flush_energy_buffer ()
 	_kelvin = _internal_energy / _heat_capacity
+
+func _flush_energy_buffer ():
+	_internal_energy += _energy_change_buffer
+	_energy_change_buffer = 0.0
 #ENDOF private functions

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://chd1kwemhblx6"]
+[gd_scene load_steps=4 format=3 uid="uid://chd1kwemhblx6"]
 
 [ext_resource type="Script" uid="uid://c1oalvvwhmbtd" path="res://Assets/Scripts/HeatSystem/thermal_update_manager.gd" id="1_nle7x"]
 [ext_resource type="PackedScene" uid="uid://b35vvaq6iihw5" path="res://Assets/Scenes/Dev/Thermal Tests/Prefabs/prefab_experimental_heat_tile.tscn" id="2_nle7x"]
+[ext_resource type="Script" uid="uid://bseqtddmlbpnn" path="res://Assets/Scripts/HeatSystem/Experimental/thermal_tile_matrix_instantiator.gd" id="3_ek0qu"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_nle7x")
@@ -11,4 +12,15 @@ script = ExtResource("1_nle7x")
 metadata/_custom_type_script = "uid://c1oalvvwhmbtd"
 
 [node name="ThermalTile" parent="ThermalUpdateManager" instance=ExtResource("2_nle7x")]
-_internal_energy = 350000.0
+_internal_energy = 250000.0
+
+[node name="ThermalTileMatrixInstantiator" type="Node" parent="ThermalUpdateManager" node_paths=PackedStringArray("_parent_node")]
+script = ExtResource("3_ek0qu")
+_sample_tile = ExtResource("2_nle7x")
+_parent_node = NodePath("..")
+_instantiate_on_init = false
+_start_x = 0.0
+_tile_width = 16.0
+_start_y = 0.0
+_tile_height = 16.0
+metadata/_custom_type_script = "uid://bseqtddmlbpnn"

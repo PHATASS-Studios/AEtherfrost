@@ -25,6 +25,10 @@ var _height :int = 0
 # fetches and returns entry at position X, Y
 func get_position (x :int, y :int) -> ThermalEntity:
 	return _get_position(x, y)	
+	
+#sets given position value
+func set_position (x :int, y :int, value: ThermalEntity):
+	_set_position(x, y, value)
 #ENDOF public methods
 
 # private variables
@@ -54,7 +58,22 @@ func _get_position (x :int, y :int) -> ThermalEntity:
 		push_error ("[!!] ThermalEntity2DMatrix._get_position(x,y): x and y must be inside bounds!")
 		return null
 	
-	return _internal_array.get(x + (y * _width))
+	return _internal_array.get(_2d_index_to_1d(x, y))
+
+func _set_position (x :int, y :int, value):
+	if not _internal_array:
+		push_error ("[!!] ThermalEntity2DMatrix._get_position(x, y): _internal_array not initialized!!")
+		return
+	
+	if not _is_inside(x,y):
+		push_error ("[!!] ThermalEntity2DMatrix._get_position(x,y): x and y must be inside bounds!")
+		return
+	
+	_internal_array.set(_2d_index_to_1d(x, y), value)
+
+# transforms an X,Y matrix coordinate into the corresponding 1D array index
+func _2d_index_to_1d (x :int, y :int) -> int:
+	return x + (y * _width)
 
 # calculates if position x,y falls inside of this matrix' bounds
 func _is_inside (x: int, y :int):

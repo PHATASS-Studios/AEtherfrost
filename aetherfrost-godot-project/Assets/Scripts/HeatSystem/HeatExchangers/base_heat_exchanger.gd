@@ -8,8 +8,8 @@ extends RefCounted
 
 # Calculates heat transferred between two entities for given time
 # notifies each of the corresponding entities of their energy change.
-# Returns true if operation is successful, false if it isn’t for some reason
-func exchange_heat (entity_A :ThermalEntity, entity_B :ThermalEntity, delta_time :float) -> bool:
-	print_debug("[!!] ERROR: BaseHeatExchanger.exchange_heat base method called!!")
+# Returns the amount of joules that were transfered
+func exchange_heat (entity_A :ThermalEntity, entity_B :ThermalEntity, delta_time :float) -> float:
+	push_error ("[!!] ERROR: BaseHeatExchanger.exchange_heat base method called!!")
 	return false
 #ENDOF abstract methods

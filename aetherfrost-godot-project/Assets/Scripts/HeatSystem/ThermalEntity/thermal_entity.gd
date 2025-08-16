@@ -73,7 +73,7 @@ func _set_internal_energy_from_kelvin (kelvin : float):
 func _connect_updater ():
 	var update_manager :ThermalUpdateManager = find_parent("ThermalUpdateManager") as ThermalUpdateManager
 	if not update_manager:
-		print_debug("ThermalEntity didn't find valid parent ThermalUpdateManager. Update event not registered")
+		push_error ("[!!] ThermalEntity didn't find valid parent ThermalUpdateManager. Update event not registered")
 		return
 	else:
 		update_manager.thermalUpdate.connect(_thermal_update)

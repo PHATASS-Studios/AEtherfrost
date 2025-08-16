@@ -18,10 +18,10 @@ extends Node
 # Node lifecycle
 func _process (deltaTime :float):
 	if not canvas_item:
-		print_debug("[!!] CanvasItemModulateFromEntityTemperature.canvas_item NOT INITIALIZED")
+		push_warning ("[!!] CanvasItemModulateFromEntityTemperature.canvas_item NOT INITIALIZED")
 		return
 	if not thermal_entity:
-		print_debug("[!!] CanvasItemModulateFromEntityTemperature.thermal_entity NOT INITIALIZED")
+		push_warning ("[!!] CanvasItemModulateFromEntityTemperature.thermal_entity NOT INITIALIZED")
 		return
 		
 	var color = _color_from_temperature(thermal_entity.celsius)

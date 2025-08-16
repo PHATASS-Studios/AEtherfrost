@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b35vvaq6iihw5"]
 
-[ext_resource type="Script" uid="uid://s3f0gx001cwa" path="res://Assets/Scripts/ThermalEntity/ThermalEntity.gd" id="1_0csfb"]
+[ext_resource type="Script" uid="uid://s3f0gx001cwa" path="res://Assets/Scripts/HeatSystem/ThermalEntity/thermal_entity.gd" id="1_0csfb"]
 [ext_resource type="Texture2D" uid="uid://6r7p6k1hkipl" path="res://Assets/Sprites/Technical/16x16-TileSample.png" id="2_61pbs"]
 [ext_resource type="Script" uid="uid://ch7y4rtro7ai6" path="res://Assets/Scripts/SimpleBehaviours/SpriteBehaviours/canvas_item_modulate_from_entity_temperature.gd" id="3_g1ipo"]
 [ext_resource type="Gradient" uid="uid://bk1r3mmf73cfe" path="res://Assets/Gradients/Basic_heat_gradient.tres" id="4_u4xkw"]

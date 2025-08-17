@@ -37,7 +37,7 @@ var _internal_array : Array[ThermalEntity] = []
 
 # constructor
 func _init (width_param :int, height_param :int):
-	_initialize_array_size(_width, _height)
+	_initialize_array_size(width_param, height_param)
 #ENDOF constructor
 
 # private functions

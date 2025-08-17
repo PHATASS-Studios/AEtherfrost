@@ -11,14 +11,10 @@ script = ExtResource("1_nle7x")
 script = ExtResource("1_nle7x")
 metadata/_custom_type_script = "uid://c1oalvvwhmbtd"
 
-[node name="ThermalTile" parent="ThermalUpdateManager" instance=ExtResource("2_nle7x")]
-_internal_energy = 250000.0
-
 [node name="ThermalTileMatrixInstantiator" type="Node" parent="ThermalUpdateManager" node_paths=PackedStringArray("_parent_node")]
 script = ExtResource("3_ek0qu")
 _sample_tile = ExtResource("2_nle7x")
 _parent_node = NodePath("..")
-_instantiate_on_init = false
 _start_x = 0.0
 _tile_width = 16.0
 _start_y = 0.0

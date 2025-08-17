@@ -29,6 +29,10 @@ func get_position (x :int, y :int) -> ThermalEntity:
 #sets given position value
 func set_position (x :int, y :int, value: ThermalEntity):
 	_set_position(x, y, value)
+
+func adjacent_pairs (callback :Callable):
+	_adjacent_pairs (callback)
+	
 #ENDOF public methods
 
 # private variables
@@ -81,4 +85,19 @@ func _is_inside (x: int, y :int):
 		return false
 	else:
 		return true
+
+# iterate over each pair of adjacent (vertical and horizontal only) tiles
+# executes given callback passing both tiles for each
+func _adjacent_pairs (callback :Callable):
+	for y :int in _height:
+		for x :int in _width:
+			_tile_pairs (x, y, callback)
+
+# tries to execute given callback for given tile and 2 neighbors to avoid duplicate pairs
+func _tile_pairs (x :int, y :int, callback :Callable):
+	var center : ThermalEntity = _get_position(x, y)
+	if x < (_width-1):
+		callback.call (center, _get_position(x+1, y))
+	if y < (_height-1):
+		callback.call (center, _get_position(x, y+1))
 #ENDOF private functions

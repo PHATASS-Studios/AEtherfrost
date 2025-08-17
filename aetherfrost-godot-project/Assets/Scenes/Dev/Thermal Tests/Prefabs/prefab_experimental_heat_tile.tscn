@@ -8,6 +8,7 @@
 [node name="ThermalTile" type="Node2D"]
 script = ExtResource("1_0csfb")
 _internal_energy = 300000.0
+_conductivity_factor = 10.0
 metadata/_custom_type_script = "uid://s3f0gx001cwa"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,4 +20,5 @@ script = ExtResource("3_g1ipo")
 canvas_item = NodePath("..")
 thermal_entity = NodePath("../..")
 sample_gradient = ExtResource("4_u4xkw")
+max_celsius = 300.0
 metadata/_custom_type_script = "uid://ch7y4rtro7ai6"

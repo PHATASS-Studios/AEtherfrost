@@ -8,7 +8,7 @@ signal thermal_tile_matrix_instantiated (matrix :ThermalEntity2DMatrix)
 #public variables
 var matrix : ThermalEntity2DMatrix:
 	get:
-		if not matrix:
+		if not _matrix:
 			push_warning ("[!!] ThermalTileMatrixInstantiator.matrix.get() _matrix not initialized yet!!")
 		return _matrix
 var _matrix : ThermalEntity2DMatrix = null
@@ -51,9 +51,10 @@ func _ready ():
 func _instantiate_matrix ():
 	_matrix = ThermalEntity2DMatrix.new(_columns, _rows)
 	
-	for y in _rows:
-		for x in _columns:
+	for y:int in _rows:
+		for x:int in _columns:
 			var new_tile : ThermalEntity = _new_tile(x, y)
+			_matrix.set_position(x, y, new_tile)
 	
 	thermal_tile_matrix_instantiated.emit(_matrix)
 
@@ -66,7 +67,7 @@ func _new_tile (column :int, row :int) -> ThermalEntity:
 		return null
 	
 	_parent_node.call_deferred("add_child", new_tile)
-	new_tile.set_owner(_parent_node)
+	new_tile.call_deferred("set_owner", _parent_node)
 	
 	new_tile.position = _tile_position(column, row)
 	

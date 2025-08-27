@@ -5,7 +5,7 @@
 ## Contains methods to access and iterate over each MapTileRoot and over each corresponding map tile entity
 
 class_name MapTileMatrix
-extends Node
+extends Node2D
 
 # public properties
 # X dimension
@@ -25,12 +25,12 @@ var _height :int = 0
 
 # public methods
 # fetches and returns MapTileRoot at position X, Y
-func get_position (x :int, y :int) -> MapTileNode:
-	return _get_position(x, y)	
+func get_tile (x :int, y :int) -> MapTileNode:
+	return _get_tile(x, y)	
 	
 # sets given position value
-func set_position (x :int, y :int, value: MapTileNode):
-	_set_position(x, y, value)
+func set_tile (x :int, y :int, value: MapTileNode):
+	_set_tile(x, y, value)
 
 # iterate over each pair of adjacent (vertical and horizontal only) MapTileNode
 # executes given callback passing both MapTileNode for each pair
@@ -60,7 +60,7 @@ func _initialize_array_size (width_param :int, height_param :int) -> void:
 	_internal_array.resize(_width * _height)
 
 # fetches and returns entry at position X, Y
-func _get_position (x :int, y :int) -> ThermalEntity:
+func _get_tile (x :int, y :int) -> MapTileNode:
 	if not _internal_array:
 		push_error ("[!!] ThermalEntity2DMatrix._get_position(x, y): _internal_array not initialized!!")
 		return null
@@ -72,7 +72,7 @@ func _get_position (x :int, y :int) -> ThermalEntity:
 	return _internal_array.get(_2d_index_to_1d(x, y))
 
 # writes value at x, y position
-func _set_position (x :int, y :int, value):
+func _set_tile (x :int, y :int, value :MapTileNode):
 	if not _internal_array:
 		push_error ("[!!] ThermalEntity2DMatrix._get_position(x, y): _internal_array not initialized!!")
 		return
@@ -103,10 +103,9 @@ func _adjacent_pairs (callback :Callable):
 
 # tries to execute given callback for given tile and 2 neighbors to avoid duplicate pairs
 func _tile_pairs (x :int, y :int, callback :Callable):
-	var center : ThermalEntity = _get_position(x, y)
+	var center : MapTileNode = _get_tile(x, y)
 	if x < (_width-1):
-		callback.call (center, _get_position(x+1, y))
+		callback.call (center, _get_tile(x+1, y))
 	if y < (_height-1):
-		callback.call (center, _get_position(x, y+1))
+		callback.call (center, _get_tile(x, y+1))
 #ENDOF private functions
-

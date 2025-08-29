@@ -5,7 +5,25 @@ class_name TerrainType
 extends Resource
 
 # exports
-@export var ID :int # terrain type ID
+# terrain type ID
+@export var _id :int
+var id :int:
+	get:
+		return _id
+		
+# nice string name of this terrain type
+@export var _name :String
+var name :String:
+	get:
+		return _name
 
-@export var name :String # nice string name of this terrain type
+# Additional update logic for this type of terrain
+@export var _terrain_update_rules :Array[TileUpdateRule]
 #ENDOF exports
+
+
+# public methods
+# apply all the TileUpdateRule(s) to the given MapTileNode object
+func update_terrain (tile :MapTileNode):
+	push_warning("TerrainType.update_terrain() UNIMPLEMENTED")
+#ENDOF public methods

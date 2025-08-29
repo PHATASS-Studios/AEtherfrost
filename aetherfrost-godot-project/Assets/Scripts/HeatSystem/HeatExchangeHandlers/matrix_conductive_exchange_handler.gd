@@ -21,7 +21,7 @@ func _physics_process(deltaTime: float) -> void:
 		push_error ("[!!] MatrixConductiveExchangeHandler matrix_source is null!!")
 		return
 	
-	matrix_source.matrix.adjacent_pairs(
+	matrix_source.matrix.adjacent_pairs( #change to matrix_source.thermal_entity_matrix
 		func(entity_A: ThermalEntity, entity_B: ThermalEntity):
 			_heat_exchanger.exchange_heat(entity_A, entity_B, deltaTime))
 #ENDOF private functions

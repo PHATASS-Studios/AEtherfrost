@@ -1,13 +1,14 @@
 [gd_scene load_steps=7 format=4 uid="uid://cp87v57g7o0n5"]
 
-[ext_resource type="Texture2D" uid="uid://ct6l5wde4ee0h" path="res://Assets/TileSets/DevTileSets/Sprites/dev_void_ground_tileset.png" id="1_4262d"]
 [ext_resource type="Texture2D" uid="uid://clpxfsekm6etj" path="res://Assets/TileSets/DevTileSets/Sprites/dev_path_ground_tileset.png" id="2_jlpfd"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_mrdhh"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4oafi"]
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6n6g3"]
 resource_name = "dev-void-ground"
-texture = ExtResource("1_4262d")
+texture = SubResource("CompressedTexture2D_4oafi")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0

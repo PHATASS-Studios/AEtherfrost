@@ -8,9 +8,8 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mudf7"]
 
-[node name="MapTileNode" type="Node2D" node_paths=PackedStringArray("thermal_entity")]
+[node name="MapTileNode" type="Node2D"]
 script = ExtResource("1_oyq76")
-thermal_entity = NodePath("ThermalEntity")
 metadata/_custom_type_script = "uid://dohaijjljhhr"
 
 [node name="ThermalEntity" type="Node2D" parent="."]

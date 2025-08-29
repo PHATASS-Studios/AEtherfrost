@@ -6,5 +6,22 @@ class_name MapTileNode
 extends Node2D
 
 # export variables
-@export var thermal_entity : ThermalEntity
+@export var _terrain : TerrainType
+var terrain :TerrainType:
+	get:
+		return _terrain
+	set (value):
+		_set_terrain_type (value)
+
+@export var _thermal_entity : ThermalEntity
+var thermal_entity :ThermalEntity:
+	get:
+		return _thermal_entity
+
 #ENDOF export variables
+
+
+# private methods
+func _set_terrain_type (value :TerrainType):
+	_terrain = value
+#ENDOF private methods

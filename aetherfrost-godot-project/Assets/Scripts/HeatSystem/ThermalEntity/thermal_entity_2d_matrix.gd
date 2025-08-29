@@ -30,9 +30,10 @@ func get_position (x :int, y :int) -> ThermalEntity:
 func set_position (x :int, y :int, value: ThermalEntity):
 	_set_position(x, y, value)
 
+# iterate over each pair of adjacent (vertical and horizontal only) tiles
+# executes given callback passing both tiles for each
 func adjacent_pairs (callback :Callable):
 	_adjacent_pairs (callback)
-	
 #ENDOF public methods
 
 # private variables
@@ -64,6 +65,7 @@ func _get_position (x :int, y :int) -> ThermalEntity:
 	
 	return _internal_array.get(_2d_index_to_1d(x, y))
 
+# writes value at x, y position
 func _set_position (x :int, y :int, value):
 	if not _internal_array:
 		push_error ("[!!] ThermalEntity2DMatrix._get_position(x, y): _internal_array not initialized!!")
@@ -79,7 +81,7 @@ func _set_position (x :int, y :int, value):
 func _2d_index_to_1d (x :int, y :int) -> int:
 	return x + (y * _width)
 
-# calculates if position x,y falls inside of this matrix' bounds
+# calculates if index x,y falls inside of this matrix' bounds
 func _is_inside (x: int, y :int):
 	if x < 0 or x >= _width or y < 0 or y >= _height:
 		return false
